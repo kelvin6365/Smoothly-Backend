@@ -12,7 +12,10 @@ type Query @group(middleware: ["auth:api"]) {
 type Mutation{
     createUser(
         name:String @rules(apply: ["required"])
+        username:String @rules(apply: ["required","unique:users,username"])
+        user_type:String @rules(apply: ["required"])
         password:String @bcrypt @rules(apply: ["required"])
+        permission:String @rules(apply: ["required"])
         email:String  @rules(apply: ["required","email","unique:users,email"])
     ): User @create(model:"App\\User")
 }
@@ -20,6 +23,9 @@ type Mutation{
 type User {
     id: ID!
     name: String!
+    username: String!
+    permission: String!
+    user_type: String!
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
