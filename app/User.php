@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Permission;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username','user_type','permission'
+        'name', 'email', 'password','username','user_type'
     ];
 
     /**
@@ -37,4 +38,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function findForPassport($username) {
+        return $this->where('username', $username)->first();
+    }
+
+    public function UserPermission() {
+        return $this->hasMany(UserPermission::class, 'user_id','id')->orderBy('created_at','DESC');
+    }
 }

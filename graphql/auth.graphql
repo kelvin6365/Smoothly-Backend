@@ -7,17 +7,6 @@ input RefreshTokenInput {
     refresh_token: String
 }
 
-type User {
-    id: ID!
-    name: String!
-    username: String!
-    user_type: String!
-    permission: String!
-    email: String!
-    created_at: DateTime!
-    updated_at: DateTime!
-}
-
 type AuthPayload {
     access_token: String!
     refresh_token: String!

@@ -24,10 +24,23 @@ type User {
     id: ID!
     name: String!
     username: String!
-    permission: String!
     user_type: String!
+    UserPermissions: [UserPermission!]! @hasMany(relation:"UserPermission" ,type: "paginator")
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Permission {
+    id: ID!
+    permission_type: String!
+}
+
+type UserPermission {
+    id: ID! 
+    permission_id: ID!
+    user_id: ID!
+    permission: Permission @hasOne
+    created_at: DateTime!
 }
 
