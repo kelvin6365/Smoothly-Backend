@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d64f7e0f415ae31f439e5104256f997d",
+    "content-hash": "9b6f32dbcdd754d75e52bbd9e86e16a8",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -759,16 +759,16 @@
         },
         {
             "name": "joselfonseca/lighthouse-graphql-passport-auth",
-            "version": "1.3.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joselfonseca/lighthouse-graphql-passport-auth.git",
-                "reference": "73ebd6f0fc13f1625922fd4eeb3434260909d901"
+                "reference": "d01bd89ff764be3a344c87897ad56b95c8cbc11b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joselfonseca/lighthouse-graphql-passport-auth/zipball/73ebd6f0fc13f1625922fd4eeb3434260909d901",
-                "reference": "73ebd6f0fc13f1625922fd4eeb3434260909d901",
+                "url": "https://api.github.com/repos/joselfonseca/lighthouse-graphql-passport-auth/zipball/d01bd89ff764be3a344c87897ad56b95c8cbc11b",
+                "reference": "d01bd89ff764be3a344c87897ad56b95c8cbc11b",
                 "shasum": ""
             },
             "require": {
@@ -810,7 +810,7 @@
                 "lighthouse",
                 "passport-auth"
             ],
-            "time": "2019-06-26T13:47:37+00:00"
+            "time": "2019-04-15T00:55:03+00:00"
         },
         {
             "name": "laravel/framework",

@@ -15,7 +15,6 @@ type Mutation{
         username:String @rules(apply: ["required","unique:users,username"])
         user_type:String @rules(apply: ["required"])
         password:String @bcrypt @rules(apply: ["required"])
-        permission:String @rules(apply: ["required"])
         email:String  @rules(apply: ["required","email","unique:users,email"])
     ): User @create(model:"App\\User")
 }
