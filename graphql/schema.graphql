@@ -38,8 +38,16 @@ type Permission {
 type UserPermission {
     id: ID! 
     permission_id: ID!
+    jobboard_id: ID!
     user_id: ID!
     permission: Permission @hasOne
+    jobboard: Jobboard @hasOne
     created_at: DateTime!
 }
 
+type Jobboard {
+    id: ID!
+    name: String!
+    description: String!
+    active: String!
+}
