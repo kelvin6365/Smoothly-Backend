@@ -23,7 +23,11 @@ class CreateUserPermissionsTable extends Migration
             $table->foreign('permission_id')
                     ->references('id')->on('permissions')
                     ->onDelete('cascade');
-            $table->unique(['user_id', 'permission_id']);
+            $table->bigInteger('jobboard_id')->unsigned();
+            $table->foreign('jobboard_id')
+                    ->references('id')->on('jobboards')
+                    ->onDelete('cascade');
+            $table->unique(['user_id', 'permission_id','jobboard_id']);
             $table->timestamps();
         });
     }

@@ -19,6 +19,7 @@ use Faker\Generator as Faker;
 $factory->define(UserPermission::class, function (Faker $faker) {
     return [
         'permission_id' => $faker->randomElement($array = array ('1','2','3')),
-        'user_id' => $faker->unique()->numberBetween(1,50)
+        'user_id' => $faker->unique()->numberBetween(1,50),
+        'jobboard_id' => '1',
     ];
 });

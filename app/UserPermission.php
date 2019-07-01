@@ -17,7 +17,7 @@ class UserPermission extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'permission_id','user_id'
+        'permission_id','user_id','jobboard_id'
     ];
 
     public function user() {
@@ -26,6 +26,10 @@ class UserPermission extends Authenticatable
 
     public function permission() {
         return $this->belongsTo(Permission::class);
+    }
+
+    public function jobboard() {
+        return $this->belongsTo(Jobboard::class);
     }
 
 }
