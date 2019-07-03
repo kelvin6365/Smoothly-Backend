@@ -17,6 +17,10 @@ class CreateUserDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->string('job_title');
             $table->string('location');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('cascade');
             $table->bigInteger('team_id')->unsigned();
             $table->foreign('team_id')
                     ->references('id')->on('teams')

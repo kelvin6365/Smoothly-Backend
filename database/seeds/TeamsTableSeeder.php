@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TeamTableSeeder extends Seeder
+class TeamsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,10 +11,6 @@ class TeamTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teams')->insert([
-            'name'=>'Team A',
-            'in_charge'=>'1',
-            'Field'=>'Sex',
-        ]);
+        factory(App\Team::class, 10)->create();
     }
 }

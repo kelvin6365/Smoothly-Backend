@@ -26,8 +26,35 @@ type User {
     user_type: String!
     UserPermissions: [UserPermission!]! @hasMany(relation:"UserPermission" ,type: "paginator")
     email: String!
+	userDetail: UserDetail @hasOne
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Team {
+    id: ID!
+    name: String!
+    in_charge_user_id: ID!
+	in_charge_user: User @hasOne
+	TeamUsers: [TeamUser!]! @hasMany
+	team_user: UserDetail @hasMany
+}
+
+type TeamUser {
+    id: ID!
+    user_id: ID!
+	User: User @hasOne
+    team_id: ID!
+	Team: Team @hasOne
+}
+
+type UserDetail {
+	id:ID!
+	user_id:ID!
+	team_id:ID!
+	belongsToTeam: Team @hasOne
+	job_title: String!
+    location: String!
 }
 
 type Permission {
@@ -49,21 +76,6 @@ type Jobboard {
     id: ID!
     name: String!
     description: String!
-    teamID: Int!
+	team_id:ID!
     active: String!
-    team: Team @hasOne
-}
-
-type Team {
-    id: ID!
-    name: String!
-    inCharge: Int!
-    active: String!
-}
-
-type UserDetail {
-    id: ID!
-    jobTitle: String!
-    location: String!
-    team: Team @hasOne
 }
