@@ -49,5 +49,21 @@ type Jobboard {
     id: ID!
     name: String!
     description: String!
+    teamID: Int!
     active: String!
+    team: Team @hasOne
+}
+
+type Team {
+    id: ID!
+    name: String!
+    inCharge: Int!
+    active: String!
+}
+
+type UserDetail {
+    id: ID!
+    jobTitle: String!
+    location: String!
+    team: Team @hasOne
 }

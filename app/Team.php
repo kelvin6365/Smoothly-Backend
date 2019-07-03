@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Jobboard extends Authenticatable
+class Team extends Authenticatable
 {
     use Notifiable;
 
@@ -15,7 +15,7 @@ class Jobboard extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','description','active','team_id'
+        'name','in_charge','field',
     ];
 
 }

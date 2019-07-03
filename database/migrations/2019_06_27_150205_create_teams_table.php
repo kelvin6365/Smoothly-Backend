@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobboardsTable extends Migration
+class CreateTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateJobboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobboards', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
-            $table->bigInteger('team_id')->unsigned();
-            $table->foreign('team_id')
-                    ->references('id')->on('teams')
+            $table->bigInteger('in_charge')->unsigned();
+            $table->foreign('in_charge')
+                    ->references('id')->on('users')
                     ->onDelete('cascade');
-            $table->string('active',1);
-            $table->unique(['team_id']);
+            $table->string('field');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateJobboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobboards');
+        Schema::dropIfExists('teams');
     }
 }

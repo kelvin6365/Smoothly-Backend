@@ -15,10 +15,12 @@ class JobboardsTableSeeder extends Seeder
             'name'=>'test1',
             'description'=>'This is a test',
             'active'=>'1',
+            'team_id'=>2,
         ],[
             'name'=>'test2',
             'description'=>'This is a test2',
             'active'=>'0',
+            'team_id'=>2,
         ]);
     }
 }
