@@ -3,6 +3,7 @@
 namespace App;
 
 use App\UserPermission;
+use App\Team;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -21,6 +22,10 @@ class Jobboard extends Authenticatable
 
     public function UserPermission() {
         return $this->hasMany(UserPermission::class, 'jobboard_id','id');
+    }
+
+    public function belongsToTeams() {
+        return $this->hasMany(Team::class, 'id','team_id');
     }
 
 }

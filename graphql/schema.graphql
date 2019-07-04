@@ -7,6 +7,8 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 type Query @group(middleware: ["auth:api"]) {
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+    allTeams: [Team!]! @paginate(type: "paginator" model: "App\\Team")
+    allJobboards: [Jobboard!]! @paginate(type: "paginator" model: "App\\Jobboard")
 }
 
 type Mutation{
@@ -37,7 +39,7 @@ type Team {
     in_charge_user_id: ID!
 	in_charge_user: User @hasOne
 	TeamUsers: [TeamUser!]! @hasMany
-	team_user: UserDetail @hasMany
+    TeamJobboards: [TeamJobboard!]! @hasMany
 }
 
 type TeamUser {
@@ -46,6 +48,14 @@ type TeamUser {
 	User: User @hasOne
     team_id: ID!
 	Team: Team @hasOne
+}
+
+type TeamJobboard {
+    id: ID!
+    jobboard_id: ID!
+	belongsToJobboard: Jobboard @hasOne
+    team_id: ID!
+	belongsToTeam: Team @hasOne
 }
 
 type UserDetail {
@@ -77,5 +87,6 @@ type Jobboard {
     name: String!
     description: String!
 	team_id:ID!
+    belongsToTeams:[Team!]! @hasMany
     active: String!
 }

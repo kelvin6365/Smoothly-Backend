@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
         
         //php artisan db:seed --class=TeamUsersTableSeeder
         //$this->call(TeamUsersTableSeeder::class);
+
+        //php artisan db:seed --class=TeamJobboardsTableSeeder
+        //$this->call(TeamJobboardsTableSeeder::class);
     }
 }
