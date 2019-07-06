@@ -90,7 +90,6 @@ type Jobboard {
     id: ID!
     name: String!
     description: String!
-	team_id:ID!
     belongsToTeams:[Team!]! @hasMany
     active: String!
     sprints: [Sprint!]! @hasMany
