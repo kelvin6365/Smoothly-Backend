@@ -9,6 +9,7 @@ type Query @group(middleware: ["auth:api"]) {
     user(id: ID @eq): User @find(model: "App\\User")
     allTeams: [Team!]! @paginate(type: "paginator" model: "App\\Team")
     allJobboards: [Jobboard!]! @paginate(type: "paginator" model: "App\\Jobboard")
+    UserPermission(user_id: ID @eq): UserPermission @find(model: "App\\UserPermission")
 }
 
 type Mutation{
@@ -77,6 +78,7 @@ type UserPermission {
     permission_id: ID!
     jobboard_id: ID!
     user_id: ID!
+    user: User @hasOne
     permission: Permission @hasOne
     jobboard: Jobboard @hasOne
     created_at: DateTime!
