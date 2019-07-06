@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Permission;
+use App\UserDetail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,4 +47,10 @@ class User extends Authenticatable
     public function UserPermission() {
         return $this->hasMany(UserPermission::class, 'user_id','id')->orderBy('created_at','DESC');
     }
+
+    public function UserDetail() {
+        return $this->hasOne(UserDetail::class, 'user_id','id');
+    }
+
+    
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PermissionsTableSeeder extends Seeder
+class TeamsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('permissions')->delete();
-        factory(App\Permission::class, 3)->create();
+        DB::table('teams')->delete();
+        factory(App\Team::class, 10)->create();
     }
 }

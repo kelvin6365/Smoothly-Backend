@@ -7,6 +7,11 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 type Query @group(middleware: ["auth:api"]) {
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+    allTeams: [Team!]! @paginate(type: "paginator" model: "App\\Team")
+    allJobboards: [Jobboard!]! @paginate(type: "paginator" model: "App\\Jobboard")
+    UserPermission(user_id: ID @eq): UserPermission @find(model: "App\\UserPermission")
+    team(id: ID @eq): Team @find(model:"App\\Team")
+    sprint(id: ID @eq): Sprint @find(model:"App\\Sprint")
 }
 
 type Mutation{
@@ -26,8 +31,43 @@ type User {
     user_type: String!
     UserPermissions: [UserPermission!]! @hasMany(relation:"UserPermission" ,type: "paginator")
     email: String!
+	userDetail: UserDetail @hasOne
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type Team {
+    id: ID!
+    name: String!
+    in_charge_user_id: ID!
+	in_charge_user: User @hasOne
+	TeamUsers: [TeamUser!]! @hasMany
+    TeamJobboards: [TeamJobboard!]! @hasMany
+}
+
+type TeamUser {
+    id: ID!
+    user_id: ID!
+	User: User @hasOne
+    team_id: ID!
+	Team: Team @hasOne
+}
+
+type TeamJobboard {
+    id: ID!
+    jobboard_id: ID!
+	belongsToJobboard: Jobboard @hasOne
+    team_id: ID!
+	belongsToTeam: Team @hasOne
+}
+
+type UserDetail {
+	id:ID!
+	user_id:ID!
+	team_id:ID!
+	belongsToTeam: Team @hasOne
+	job_title: String!
+    location: String!
 }
 
 type Permission {
@@ -40,6 +80,7 @@ type UserPermission {
     permission_id: ID!
     jobboard_id: ID!
     user_id: ID!
+    user: User @hasOne
     permission: Permission @hasOne
     jobboard: Jobboard @hasOne
     created_at: DateTime!
@@ -49,5 +90,21 @@ type Jobboard {
     id: ID!
     name: String!
     description: String!
+    belongsToTeams:[Team!]! @hasMany
     active: String!
+    sprints: [Sprint!]! @hasMany
+}
+
+type SprintType {
+    id: ID!
+    name: String!
+}
+
+type Sprint{
+    id: ID!
+    jobboard: Jobboard @hasOne
+    name: String!
+    sprintType: SprintType! @hasOne
+    startDate: DateTime!
+    endDate: DateTime!
 }
