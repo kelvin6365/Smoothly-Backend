@@ -11,6 +11,7 @@ class UserDetailsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('user_details')->delete();
         factory(App\UserDetail::class, 50)->create();
     }
 }

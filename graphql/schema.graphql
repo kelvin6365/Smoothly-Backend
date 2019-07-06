@@ -10,6 +10,8 @@ type Query @group(middleware: ["auth:api"]) {
     allTeams: [Team!]! @paginate(type: "paginator" model: "App\\Team")
     allJobboards: [Jobboard!]! @paginate(type: "paginator" model: "App\\Jobboard")
     UserPermission(user_id: ID @eq): UserPermission @find(model: "App\\UserPermission")
+    team(id: ID @eq): Team @find(model:"App\\Team")
+    sprint(id: ID @eq): Sprint @find(model:"App\\Sprint")
 }
 
 type Mutation{
@@ -91,4 +93,19 @@ type Jobboard {
 	team_id:ID!
     belongsToTeams:[Team!]! @hasMany
     active: String!
+    sprints: [Sprint!]! @hasMany
+}
+
+type SprintType {
+    id: ID!
+    name: String!
+}
+
+type Sprint{
+    id: ID!
+    jobboard: Jobboard @hasOne
+    name: String!
+    sprintType: SprintType! @hasOne
+    startDate: DateTime!
+    endDate: DateTime!
 }

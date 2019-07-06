@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobboardsTable extends Migration
+class CreateSprintTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateJobboardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobboards', function (Blueprint $table) {
+        Schema::create('sprint_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
-            $table->string('active',1);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateJobboardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobboards');
+        Schema::dropIfExists('sprint_types');
     }
 }

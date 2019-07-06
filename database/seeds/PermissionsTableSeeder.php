@@ -11,6 +11,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('permissions')->delete();
         factory(App\Permission::class, 3)->create();
     }
 }

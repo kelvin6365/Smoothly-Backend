@@ -4,6 +4,7 @@ namespace App;
 
 use App\UserPermission;
 use App\Team;
+use App\Sprint;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,6 +27,10 @@ class Jobboard extends Authenticatable
 
     public function belongsToTeams() {
         return $this->hasMany(Team::class, 'id','team_id');
+    }
+
+    public function sprints() {
+        return $this->hasMany(Sprint::class, 'jobboard_id','id');
     }
 
 }

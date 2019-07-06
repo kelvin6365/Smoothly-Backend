@@ -11,6 +11,7 @@ class TeamUsersTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('team_users')->delete();
         factory(App\TeamUser::class, 50)->create();
     }
 }

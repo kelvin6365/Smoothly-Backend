@@ -11,16 +11,16 @@ class JobboardsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('jobboards')->delete();
         DB::table('jobboards')->insert([
             'name'=>'test1',
             'description'=>'This is a test',
             'active'=>'1',
-            'team_id'=>2,
-        ],[
+        ]);
+        DB::table('jobboards')->insert([
             'name'=>'test2',
             'description'=>'This is a test2',
             'active'=>'0',
-            'team_id'=>2,
         ]);
     }
 }

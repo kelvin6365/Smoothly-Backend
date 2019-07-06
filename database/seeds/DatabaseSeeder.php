@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TeamsTableSeeder::class);
+        $this->call(SprintTypesTableSeeder::class);
 
         // the following seed need to run as command
 
@@ -31,5 +32,8 @@ class DatabaseSeeder extends Seeder
 
         //php artisan db:seed --class=TeamJobboardsTableSeeder
         //$this->call(TeamJobboardsTableSeeder::class);
+
+        //php artisan db:seed --class=SprintsTableSeeder
+        //$this->call(SprintTypesTableSeeder::class);
     }
 }

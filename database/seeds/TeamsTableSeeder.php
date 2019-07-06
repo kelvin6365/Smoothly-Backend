@@ -11,6 +11,7 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('teams')->delete();
         factory(App\Team::class, 10)->create();
     }
 }
