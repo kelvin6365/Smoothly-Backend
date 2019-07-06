@@ -58,7 +58,7 @@ type TeamJobboard {
     jobboard_id: ID!
 	belongsToJobboard: Jobboard @hasOne
     team_id: ID!
-	belongsToTeam: Team @hasOne
+	TeamDetail: Team @hasOne
 }
 
 type UserDetail {
@@ -90,7 +90,7 @@ type Jobboard {
     id: ID!
     name: String!
     description: String!
-    belongsToTeams:[Team!]! @hasMany
+    teams:[TeamJobboard!]! @hasMany
     active: String!
     sprints: [Sprint!]! @hasMany
 }
