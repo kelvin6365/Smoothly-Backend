@@ -3,6 +3,7 @@
 namespace App;
 
 use App\User;
+use App\Team;
 use App\Jobboard;
 use App\UserDetail;
 use App\TeamUser;
@@ -21,10 +22,23 @@ class Team extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','in_charge','field',
+        'name','in_charge_user_id','field'
     ];
 
-
+    /**
+     * Create a new team instance 
+     *
+     * @param  array  $data
+     * @return \App\Team
+     */
+    protected function create(array $data)
+    {
+        return Team::create([
+            'name' => $data['name'],
+            'in_charge_user_id' => $data['in_charge_user_id'],
+            'field' => $data['name']
+        ]);
+    }
    
 
     public function in_charge_user() {

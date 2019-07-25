@@ -15,13 +15,8 @@ type Query @group(middleware: ["auth:api"]) {
 }
 
 type Mutation{
-    createUser(
-        name:String @rules(apply: ["required"])
-        username:String @rules(apply: ["required","unique:users,username"])
-        user_type:String @rules(apply: ["required"])
-        password:String @bcrypt @rules(apply: ["required"])
-        email:String  @rules(apply: ["required","email","unique:users,email"])
-    ): User @create(model:"App\\User")
+    createUser(createUserInput:CreateUserInput!@spread): User @create(model:"App\\User")
+    createTeam(createTeamInput:CreateTeamInput!@spread): Team @create(model:"App\\Team")
 }
 
 type User {
@@ -107,4 +102,17 @@ type Sprint{
     sprintType: SprintType! @hasOne
     startDate: DateTime!
     endDate: DateTime!
+}
+
+input CreateUserInput {
+    name:String @rules(apply: ["required"])
+    username:String @rules(apply: ["required","unique:users,username"])
+    user_type:String @rules(apply: ["required"])
+    password:String @bcrypt @rules(apply: ["required"])
+    email:String  @rules(apply: ["required","email","unique:users,email"])
+}
+
+input CreateTeamInput {
+    name:String @rules(apply: ["required"])
+    in_charge_user_id:ID @rules(apply: ["required"])
 }

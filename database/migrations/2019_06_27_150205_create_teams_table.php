@@ -20,7 +20,7 @@ class CreateTeamsTable extends Migration
             $table->foreign('in_charge_user_id')
                     ->references('id')->on('users')
                     ->onDelete('cascade');
-            $table->string('field');
+            $table->string('field')->nullable();
             $table->timestamps();
         });
     }
