@@ -15,7 +15,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         $this->call(TeamsTableSeeder::class);
         $this->call(SprintTypesTableSeeder::class);
-
+        $this->call(TaskTypesTableSeeder::class);
+        $this->call(TaskOrderTypesTableSeeder::class);
+        $this->call(TaskTagsTableSeeder::class);
+        $this->call(TaskStatesTableSeeder::class);
         // the following seed need to run as command
 
         //php artisan db:seed --class=UserDetailsTableSeeder
