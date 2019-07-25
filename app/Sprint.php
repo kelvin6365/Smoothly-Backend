@@ -5,6 +5,7 @@ namespace App;
 use App\Jobboard;
 use App\SprintType;
 use App\Team;
+use App\Task;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -27,6 +28,10 @@ class Sprint extends Authenticatable
 
     public function sprintType() {
         return $this->hasOne(SprintType::class, 'id','sprint_type_id');
+    }
+
+    public function Task(){
+        return $this->hasMany(Task::class, 'sprint_id','id');
     }
 
 }

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TaskOrderTypesTableSeeder::class);
         $this->call(TaskTagsTableSeeder::class);
         $this->call(TaskStatesTableSeeder::class);
+
         // the following seed need to run as command
 
         //php artisan db:seed --class=UserDetailsTableSeeder
@@ -38,5 +39,8 @@ class DatabaseSeeder extends Seeder
 
         //php artisan db:seed --class=SprintsTableSeeder
         //$this->call(SprintTypesTableSeeder::class);
+
+        //php artisan db:seed --class=TasksTableSeeder
+        //$this->call(TasksTableSeeder::class);
     }
 }
