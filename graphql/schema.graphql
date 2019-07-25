@@ -100,8 +100,46 @@ type Sprint{
     jobboard: Jobboard @hasOne
     name: String!
     sprintType: SprintType! @hasOne
-    startDate: DateTime!
-    endDate: DateTime!
+    startDate: DateTime
+    endDate: DateTime
+    tasks: [Task!]! @hasMany(relation:"Task" ,type: "paginator")
+}
+
+type Task{
+    id: ID!
+    name: String!
+    description: String!
+    hold_by: ID!
+    taskHoldByUserInfo: User! @hasOne
+    handle_by: ID!
+    taskHandleByUserInfo: User! @hasOne
+    startDate: DateTime
+    endDate: DateTime
+    taskType: TaskType! @hasOne
+    taskState: TaskState! @hasOne
+    taskTag: TaskTag! @hasOne
+    taskOrderType: TaskOrderType! @hasOne
+    belongsToSprint: Sprint! @hasOne
+}
+
+type TaskType{
+    id: ID!
+    name: String!
+}
+
+type TaskState{
+    id: ID!
+    name: String!
+}
+
+type TaskTag{
+    id: ID!
+    name: String!
+}
+
+type TaskOrderType{
+    id: ID!
+    name: String!
 }
 
 input CreateUserInput {
