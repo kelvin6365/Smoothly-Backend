@@ -20,8 +20,7 @@ class ReleasePlanTask extends Authenticatable
         'task_id','release_plan_id'
     ];
 
-    public function Task() {
-        error_log('123456');
+    public function task() {
         return $this->hasOne(Task::class, 'id','task_id');
     }
 

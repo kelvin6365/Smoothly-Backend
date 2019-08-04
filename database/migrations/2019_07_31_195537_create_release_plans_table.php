@@ -36,6 +36,6 @@ class CreateReleasePlansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('release_plan');
+        Schema::dropIfExists('release_plans');
     }
 }

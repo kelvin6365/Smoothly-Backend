@@ -88,7 +88,7 @@ type Jobboard {
     teams:[TeamJobboard!]! @hasMany
     active: String!
     sprints: [Sprint!]! @hasMany
-    releasePlan: [ReleasePlan!]! @hasMany
+    releasePlan: [ReleasePlan!] @hasMany
 }
 
 type SprintType {
@@ -123,7 +123,7 @@ type Task{
     belongsToSprint: Sprint! @hasOne
     comments: [Comment!]! @hasMany
     files: [File!]! @hasMany
-    releaseplantask: ReleasePlanTask! @hasOne
+    releaseplantask: ReleasePlanTask @hasOne
 }
 
 type TaskType{
@@ -173,7 +173,7 @@ type ReleasePlan{
 }
 
 type ReleasePlanTask{
-    Task: Task @hasOne
+    task: Task @hasOne
     task_id: String!
     release_plan_id: String!
     releaseplan: ReleasePlan @hasOne

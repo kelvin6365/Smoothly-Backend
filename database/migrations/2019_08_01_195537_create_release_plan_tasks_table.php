@@ -21,7 +21,7 @@ class CreateReleasePlanTasksTable extends Migration
                     ->onDelete('cascade');
             $table->bigInteger('release_plan_id')->nullable()->unsigned();
             $table->foreign('release_plan_id')
-                    ->references('id')->on('release_plan')
+                    ->references('id')->on('release_plans')
                     ->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateReleasePlanTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('release_plan_task');
+        Schema::dropIfExists('release_plan_tasks');
     }
 }

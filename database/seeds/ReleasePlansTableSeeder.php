@@ -26,7 +26,7 @@ class ReleasePlansTableSeeder extends Seeder
             'tag'=>'product2',
             'start_date'=>'2019-07-30 22:34:18',
             'end_date'=>'2019-08-30 22:34:18',
-            'jobboard_id'=>'3'
+            'jobboard_id'=>'1'
         ]);
         DB::table('release_plans')->insert([
             'name'=>'Release3',
@@ -34,7 +34,7 @@ class ReleasePlansTableSeeder extends Seeder
             'tag'=>'product3',
             'start_date'=>'2019-07-30 22:34:18',
             'end_date'=>'2019-08-30 22:34:18',
-            'jobboard_id'=>'4'
+            'jobboard_id'=>'1'
         ]);
     }
 }
