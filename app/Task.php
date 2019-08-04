@@ -8,6 +8,9 @@ use App\TaskType;
 use App\TaskState;
 use App\TaskTag;
 use App\TaskOrderType;
+use App\File;
+use App\Comment;
+use App\ReleasePlanTask;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -50,6 +53,18 @@ class Task extends Authenticatable
 
     public function taskOrderType() {
         return $this->hasOne(TaskOrderType::class, 'id','order_id');
+    }
+
+    public function files() {
+        return $this->hasMany(File::class, 'task_id','id');
+    }
+
+    public function comments() {
+        return $this->hasMany(Comment::class, 'task_id','id');
+    }
+
+    public function releaseplantask() {
+        return $this->hasOne(ReleasePlanTask::class, 'task_id','id');
     }
 
 }

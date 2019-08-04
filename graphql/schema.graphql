@@ -88,6 +88,7 @@ type Jobboard {
     teams:[TeamJobboard!]! @hasMany
     active: String!
     sprints: [Sprint!]! @hasMany
+    releasePlan: [ReleasePlan!]! @hasMany
 }
 
 type SprintType {
@@ -120,6 +121,9 @@ type Task{
     taskTag: TaskTag! @hasOne
     taskOrderType: TaskOrderType! @hasOne
     belongsToSprint: Sprint! @hasOne
+    comments: [Comment!]! @hasMany
+    files: [File!]! @hasMany
+    releaseplantask: ReleasePlanTask! @hasOne
 }
 
 type TaskType{
@@ -140,6 +144,39 @@ type TaskTag{
 type TaskOrderType{
     id: ID!
     name: String!
+}
+
+type File{
+    id: ID!
+    task: Task! @hasOne
+    name: String!
+    type: String!
+    comment: Comment! @hasOne
+}
+
+type Comment{
+    id: ID!
+    text: String!
+    user: User! @hasOne
+    task: Task! @hasOne
+}
+
+type ReleasePlan{
+    id: ID!
+    name: String!
+    description: String!
+    release_date: DateTime
+    tag: String!
+    startDate: DateTime!
+    endDate: DateTime!
+    jobboard: Jobboard! @hasOne
+}
+
+type ReleasePlanTask{
+    Task: Task @hasOne
+    task_id: String!
+    release_plan_id: String!
+    releaseplan: ReleasePlan @hasOne
 }
 
 input CreateUserInput {
