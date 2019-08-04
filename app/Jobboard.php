@@ -6,6 +6,7 @@ use App\UserPermission;
 use App\TeamJobboard;
 use App\Team;
 use App\Sprint;
+use App\ReleasePlan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -32,6 +33,10 @@ class Jobboard extends Authenticatable
 
     public function sprints() {
         return $this->hasMany(Sprint::class, 'jobboard_id','id');
+    }
+
+    public function releasePlan() {
+        return $this->hasMany(ReleasePlan::class, 'jobboard_id','id');
     }
 
 }
