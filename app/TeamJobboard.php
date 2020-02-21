@@ -20,9 +20,7 @@ class TeamJobboard extends Authenticatable
         'team_id','jobboard_id'
     ];
 
-    public function TeamDetail() {
-        return $this->hasOne(Team::class, 'id','team_id');
-    }
+  
 
     public function belongsToJobboard() {
         return $this->hasOne(Jobboard::class, 'id','jobboard_id');

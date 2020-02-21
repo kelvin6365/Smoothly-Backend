@@ -45,6 +45,8 @@ class Team extends Authenticatable
         return $this->hasOne(User::class, 'id','in_charge_user_id');
     }
 
+  
+    
     public function TeamJobboards() {
         return $this->hasMany(TeamJobboard::class, 'team_id','id')->orderBy('created_at','DESC');
     }

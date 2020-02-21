@@ -46,7 +46,7 @@ type Team {
 }
 
 type TeamUser {
-    id: ID!
+    id: ID! @globalId
     user_id: ID!
     User: User @hasOne
     team_id: ID!
@@ -58,7 +58,6 @@ type TeamJobboard {
     jobboard_id: ID!
     belongsToJobboard: Jobboard @hasOne
     team_id: ID!
-    TeamDetail: Team @hasOne
 }
 
 type UserDetail {
