@@ -25,7 +25,7 @@ class CreateSprintsTable extends Migration
                     ->references('id')->on('sprint_types')
                     ->onDelete('cascade');
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }

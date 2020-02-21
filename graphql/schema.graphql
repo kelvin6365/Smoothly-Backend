@@ -54,7 +54,7 @@ type TeamUser {
 }
 
 type TeamJobboard {
-    id: ID!
+    id: ID! @globalId
     jobboard_id: ID!
     belongsToJobboard: Jobboard @hasOne
     team_id: ID!
@@ -86,7 +86,7 @@ type UserPermission {
 }
 
 type Jobboard {
-    id: ID!
+    id: ID! @globalId
     name: String!
     description: String!
     teams: [TeamJobboard!]! @hasMany
@@ -96,22 +96,22 @@ type Jobboard {
 }
 
 type SprintType {
-    id: ID!
+    id: ID! @globalId
     name: String!
 }
 
 type Sprint {
-    id: ID!
+    id: ID! @globalId
     jobboard: Jobboard @hasOne
     name: String!
     sprintType: SprintType! @hasOne
-    startDate: DateTime
-    endDate: DateTime
+    start_date: DateTime
+    end_date: DateTime
     tasks: [Task!]! @hasMany(relation: "Task", type: "paginator")
 }
 
 type Task {
-    id: ID!
+    id: ID! @globalId
     name: String!
     description: String!
     hold_by: ID!
@@ -131,27 +131,27 @@ type Task {
 }
 
 type TaskType {
-    id: ID!
+    id: ID! @globalId
     name: String!
 }
 
 type TaskState {
-    id: ID!
+    id: ID! @globalId
     name: String!
 }
 
 type TaskTag {
-    id: ID!
+    id: ID! @globalId
     name: String!
 }
 
 type TaskOrderType {
-    id: ID!
+    id: ID! @globalId
     name: String!
 }
 
 type File {
-    id: ID!
+    id: ID! @globalId
     task: Task! @hasOne
     name: String!
     type: String!
@@ -166,7 +166,7 @@ type Comment {
 }
 
 type ReleasePlan {
-    id: ID!
+    id: ID! @globalId
     name: String!
     description: String!
     release_date: DateTime
