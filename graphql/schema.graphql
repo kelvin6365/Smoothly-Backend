@@ -25,7 +25,7 @@ type Mutation {
 }
 
 type User {
-    id: ID!
+    id: ID! @globalId
     name: String!
     username: String!
     user_type: String!
@@ -37,7 +37,7 @@ type User {
 }
 
 type Team {
-    id: ID!
+    id: ID! @globalId
     name: String!
     in_charge_user_id: ID!
     in_charge_user: User @hasOne
@@ -61,7 +61,7 @@ type TeamJobboard {
 }
 
 type UserDetail {
-    id: ID!
+    id: ID! @globalId
     user_id: ID!
     team_id: ID!
     belongsToTeam: Team @hasOne
@@ -75,7 +75,7 @@ type Permission {
 }
 
 type UserPermission {
-    id: ID!
+    id: ID! @globalId
     permission_id: ID!
     jobboard_id: ID!
     user_id: ID!
