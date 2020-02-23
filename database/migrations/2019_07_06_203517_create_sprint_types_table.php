@@ -16,6 +16,7 @@ class CreateSprintTypesTable extends Migration
         Schema::create('sprint_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('DisplayOrder');
             $table->timestamps();
         });
     }

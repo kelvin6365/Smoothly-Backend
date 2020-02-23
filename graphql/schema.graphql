@@ -15,6 +15,8 @@ type Query @group(middleware: ["auth:api"]) {
         @find(model: "App\\UserPermission")
     team(id: ID @eq): Team @find(model: "App\\Team")
     sprint(id: ID @eq): Sprint @find(model: "App\\Sprint")
+    jobboard(jobboard_id: ID! @eq, team_id: ID! @eq): TeamJobboard
+        @find(model: "App\\TeamJobboard")
 }
 
 type Mutation {
@@ -97,10 +99,21 @@ type Jobboard {
 
 type SprintType {
     id: ID! @globalId
+    DisplayOrder: String!
     name: String!
 }
 
 type Sprint {
+    id: ID! @globalId
+    jobboard: Jobboard @hasOne
+    name: String!
+    sprintType: SprintType! @hasOne
+    start_date: DateTime
+    end_date: DateTime
+    tasks: [Task!]! @hasMany
+}
+
+type backupSprint {
     id: ID! @globalId
     jobboard: Jobboard @hasOne
     name: String!
@@ -137,6 +150,7 @@ type TaskType {
 
 type TaskState {
     id: ID! @globalId
+    DisplayOrder: String!
     name: String!
 }
 

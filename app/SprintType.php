@@ -15,7 +15,7 @@ class SprintType extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'name','DisplayOrder'
     ];
 
 }

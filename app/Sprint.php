@@ -30,7 +30,7 @@ class Sprint extends Authenticatable
         return $this->hasOne(SprintType::class, 'id','sprint_type_id');
     }
 
-    public function Task(){
+    public function tasks(){
         return $this->hasMany(Task::class, 'sprint_id','id');
     }
 
